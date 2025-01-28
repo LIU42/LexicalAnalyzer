@@ -1,0 +1,97 @@
+enum Sex
+{
+    MALE = 0,
+    FEMALE = 1
+};
+
+struct Student
+{
+    const char* name;
+    int age;
+    enum Sex sex;
+};
+
+int exam(struct Student* pStudent, int base_level)
+{
+    int score = rand() % 100 + base_level;
+    int delta = abs(pStudent->age - pStudent->sex);
+
+    return (score + delta) / 2;
+}
+
+void say_hello(struct Student* pStudent)
+{
+    printf("Hello! my name is %s, I am %d years old.\n", pStudent->name, pStudent->age);
+
+    if (pStudent->sex == MALE)
+    {
+        printf("I am a boy.\n");
+        pStudent->sex = FEMALE;
+    }
+    else
+    {
+        printf("I am a girl.\n");
+        pStudent->sex = MALE;
+    }
+    pStudent->age += 10;
+}
+
+const int NUM_COUNT = 100000;
+
+double array1[NUM_COUNT];
+double array2[NUM_COUNT];
+
+int main(int argc, char* argv[])
+{
+    struct Student student1;
+    student1.name = "XXX";
+    student1.age = 20;
+    student1.sex = MALE;
+
+    struct Student student2 = {
+        .name = "YYY",
+        .sex = FEMALE,
+        .age = 105,
+    };
+
+    struct Student student3 = {
+        "ZZZ",
+        48,
+        MALE,
+    };
+
+    struct Student* pStudent4 = (struct Student*)malloc(sizeof(struct Student));
+    pStudent4->name = "ABCDEFG";
+    pStudent4->age = 18;
+    pStudent4->sex = FEMALE;
+
+    if (exam(&student1, 40) > 60)
+    {
+        printf("pass\n");
+        student1.age += 50;
+    }
+    else
+    {
+        printf("not pass\n");
+        student1.age -= 1;
+
+        if (exam(&student1, 400) > 60)
+        {
+            printf("pass\n");
+        }
+    }
+    say_hello(&student2);
+
+    for (int i = 0; i < 100000; i++)
+    {
+        printf("%lf\n", 1 / (1 / array1[1] + 1 / array2[1]));
+    }
+    switch (student2.sex)
+    {
+        case MALE: student1.sex = FEMALE; break;
+        case FEMALE: student1.age += 100; break;
+        default: printf("Hello\n"); break;
+    }
+    free(pStudent4);
+    return 0;
+}

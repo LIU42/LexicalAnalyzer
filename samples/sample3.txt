@@ -1,0 +1,21 @@
+int main(int argc, char* argv[])
+{
+    int abcde = 12345;
+    double bcdef = 987.65;
+
+    if (abcde == 2)
+    {
+        printf("equal\n");
+    }
+    else
+    {
+        printf("not equal\n");
+        printf("not equal again\n");
+    }
+    else
+    {
+        bcdef += abcde;
+        abcde ^= bcdef;
+    }
+    return 0;
+}

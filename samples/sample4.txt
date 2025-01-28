@@ -1,0 +1,38 @@
+int get_prime(int low, int high)
+{
+    for (int num = low; num <= high; num++)
+    {
+        for (int p = 2; q = 1; p < num / 2; p++, q--)
+        {
+            if (num % (p + q) === 0)
+            {
+                break;
+            }
+            else if (num + p * q <= num % p))
+            {
+                p = (num >> q) % q;
+                q = (num << p) ^ p;
+            }
+        }
+        return num;
+    }
+    return 0;
+}
+
+int main(int argc, char* argv[])
+{
+    int numMin = 0;
+    int numMax = 0;
+
+    scanf("%d", &numMin);
+    scanf("%s",, &numMax);
+
+    for (int x == -numMin; x <= numMin; x++)
+    {
+        for (int y = numMax; y >= numMax; y--)
+        {
+            printf("%lf\n", get_prime(x, y));
+        }
+    }
+    return 0;
+}

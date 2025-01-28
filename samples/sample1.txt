@@ -1,0 +1,49 @@
+int main(int argc, char* argv[])
+{
+    int num1 = 125;
+    int num2 = 586;
+
+    float fNumber_1 = 125.362;
+    register float fNumber_2 = 0.00000458;
+
+    bool isUsed = false;
+    bool _isCompleted = true;
+
+    static double d_HelloWorld = 12.2663478E+15;
+
+    complex comNum1 = 15+54i;
+    complex comNum2 = 1.325-65.32i;
+
+    if (num1 != num2)
+    {
+        complex comNum_Res = (15+43i+114.71)*1.5-2i-1.2E-5;
+        printf(num1 + sizeof(num2));
+        printf(comNum_Res);
+    }
+    for (int i = 0; i < 15; i++)
+    {
+        scanf("%d", &num1);
+        scanf("%lf", &d_HelloWorld);
+
+        if (comNum1 == comNum1)
+        {
+            break;
+        }
+        else
+        {
+            complex comNum3 = function0(comNum1 - comNum2);
+            printf("Value: %d", num1 - (num2 >> 1));
+        }
+        while (isUsed)
+        {
+            if (fNumber_1 <= fNumber_2)
+            {
+                int resultCode = function1("Hello", 154);
+                continue;
+            }
+            break;
+        }
+        function2(1.256E-5, 'G');
+    }
+    return 0;
+}

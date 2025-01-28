@@ -1,0 +1,105 @@
+{
+    "alias": {
+        "A-z": [
+            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
+            "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+            "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+        ],
+        "0-9": [
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+        ],
+        "1-9": [
+            "1", "2", "3", "4", "5", "6", "7", "8", "9"
+        ],
+        "others": [
+            "~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=",
+            "{", "[", "}", "]", ":", ";", "<", ",", ">", ".", "?", "/", "|", " ", "\\"
+        ]
+    },
+    "keywords": [
+        "char",     "double",   "float",    "int",      "long",     "short",    "signed",   "unsigned",
+        "void",     "if",       "else",     "for",      "do",       "while",    "break",    "continue",
+        "switch",   "case",     "default",  "goto",     "auto",     "extern",   "register", "static",
+        "typedef",  "const",    "volatile", "sizeof",   "enum",     "struct",   "union",    "return",
+        "bool",     "complex"
+    ],
+    "constants": {
+        "specials": [
+            "true", "false"
+        ],
+        "formulas": [
+            "[Start] -> 0",
+            "[Start] -> 0 [PointLeft(normal)]",
+            "[Start] -> `1-9` [DigitFloat(normal)]",
+            "[Start] -> `1-9` [DigitInt(normal)]",
+            "[DigitFloat(normal)] -> `0-9` [DigitFloat(normal)]",
+            "[DigitFloat(normal)] -> . [PointRight(normal)]",
+            "[PointLeft(normal)] -> . [PointRight(normal)]",
+            "[PointRight(normal)] -> `0-9` [DigitInt(normal)]",
+            "[DigitInt(normal)] -> `0-9` [DigitInt(normal)]",
+            "[DigitInt(normal)] -> ε",
+            "[Start] -> ' [Char]",
+            "[Char] -> `A-z` [CharEnd]",
+            "[Char] -> `0-9` [CharEnd]",
+            "[Char] -> `others` [CharEnd]",
+            "[Char] -> \" [CharEnd]",
+            "[CharEnd] -> '",
+            "[Start] -> \" [String]",
+            "[String] -> `A-z` [String]",
+            "[String] -> `0-9` [String]",
+            "[String] -> `others` [String]",
+            "[String] -> ' [String]",
+            "[String] -> \"",
+            "[DigitInt(normal)] -> E [Science(signed)]",
+            "[DigitInt(normal)] -> e [Science(signed)]",
+            "[DigitInt(normal)] -> E [Science(unsigned)]",
+            "[DigitInt(normal)] -> e [Science(unsigned)]",
+            "[Science(signed)] -> + [Science(unsigned)]",
+            "[Science(signed)] -> - [Science(unsigned)]",
+            "[Science(unsigned)] -> `0-9` [DigitInt(science)]",
+            "[DigitInt(science)] -> `0-9` [DigitInt(science)]",
+            "[DigitInt(science)] -> ε",
+            "[DigitInt(normal)] -> + [Complex]",
+            "[DigitInt(normal)] -> - [Complex]",
+            "[Complex] -> 0 [ComplexEnd]",
+            "[Complex] -> 0 [PointLeft(complex)]",
+            "[Complex] -> `1-9` [DigitFloat(complex)]",
+            "[Complex] -> `1-9` [DigitInt(complex)]",
+            "[DigitFloat(complex)] -> `0-9` [DigitFloat(complex)]",
+            "[DigitFloat(complex)] -> . [PointRight(complex)]",
+            "[PointLeft(complex)] -> . [PointRight(complex)]",
+            "[PointRight(complex)] -> `0-9` [DigitInt(complex)]",
+            "[DigitInt(complex)] -> `0-9` [DigitInt(complex)]",
+            "[DigitInt(complex)] -> i",
+            "[ComplexEnd] -> i"
+        ],
+        "start": "[Start]",
+        "final": "[Final]"
+    },
+    "identifiers": {
+        "formulas": [
+            "[Start] -> `A-z` [Content]",
+            "[Start] -> _ [Content]",
+            "[Content] -> `A-z` [Content]",
+            "[Content] -> `0-9` [Content]",
+            "[Content] -> _ [Content]",
+            "[Content] -> ε"
+        ],
+        "start": "[Start]",
+        "final": "[Final]"
+    },
+    "operators": [
+        "<<=",  ">>=",
+        "++",   "--",   ">=",   "<=",   "==",   "!=",   "&&",   "||",   "<<",   ">>",
+        "+=",   "-=",   "*=",   "/=",   "%=",   "&=",   "|=",   "^=",   "->",
+        "=",    "+",    "-",    "*",    "/",    "%",    ">",    "<",    "!",    "&",
+        "|",    "^",    ",",    "?",    ":",    "."
+    ],
+    "bounds": [
+        ";",    "(",    ")",    "[",    "]",    "{",    "}"
+    ],
+    "spaces": [
+        " ",    "\t",   "\r",   "\n"
+    ]
+}
